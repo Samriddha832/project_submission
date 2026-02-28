@@ -81,58 +81,6 @@ CREATE TABLE bookings (
 );
 
 
--- --------------------------------------------------------
--- PAYMENTS TABLE
--- --------------------------------------------------------
-CREATE TABLE payments (
-    payment_id INT(11) NOT NULL AUTO_INCREMENT,
-    booking_id INT(11),
-    user_id INT(11),
-    amount DECIMAL(10,2),
-    payment_method VARCHAR(50),
-    transaction_id VARCHAR(100),
-    payment_status ENUM('pending','completed','failed','paid') DEFAULT 'pending',
-    payment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (payment_id),
-    KEY booking_id (booking_id),
-    KEY user_id (user_id),
-    FOREIGN KEY (booking_id) REFERENCES bookings(booking_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
-
-
-
-CREATE TABLE otp (
-    id INT(11) NOT NULL AUTO_INCREMENT,
-    otp VARCHAR(45),
-    email VARCHAR(200),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    attempt INT(11) DEFAULT 0,
-    email_sent VARCHAR(45) DEFAULT '0',
-    PRIMARY KEY (id)
-);
-
-
-CREATE TABLE messages (
-    message_id INT AUTO_INCREMENT PRIMARY KEY,
-    sender_id INT NOT NULL,      -- user_id (client or admin)
-    receiver_id INT NOT NULL,    -- user_id
-    hotel_id INT NULL,           -- which hotel (optional but useful)
-    room_id INT NULL,            -- which room (optional)
-    message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_read TINYINT DEFAULT 0,
-
-    FOREIGN KEY (sender_id) REFERENCES users(user_id),
-    FOREIGN KEY (receiver_id) REFERENCES users(user_id),
-    FOREIGN KEY (hotel_id) REFERENCES hotels(hotel_id),
-    FOREIGN KEY (room_id) REFERENCES hotel_rooms(room_id)
-);
-
-ALTER TABLE messages ADD auto_sent TINYINT DEFAULT 0;
-
-
 
 CREATE TABLE otp (
     id INT(11) NOT NULL AUTO_INCREMENT,
