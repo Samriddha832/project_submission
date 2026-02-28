@@ -1,0 +1,58 @@
+.invoice-container {
+    width: 900px;
+    margin: 90px auto;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 25px;
+    height: 100vh;
+    border-radius: 10px;
+    display: flex;
+    
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.invoice-left { 
+    flex: 1; 
+}
+.invoice-right { 
+    flex: 2; 
+    
+    text-align: center; 
+}
+
+.invoice-right img {
+    margin-top: 100px;
+    width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+
+.payment-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-pay { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; color: white; font-weight: bold; }
+
+.khalti { background: #5a2a82; }
+.esewa { background: #60BB46; }
+
+.footer-section {
+    width: 900px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.print-btn {
+    background: #333;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}

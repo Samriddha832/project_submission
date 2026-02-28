@@ -1,0 +1,200 @@
+        /* Styling for admin DashBoard */
+        body {
+                font-family: Arial, sans-serif;
+                background: #f4f6f9;
+                margin: 0;
+                padding: 0;
+        }
+
+        .All-Contain{
+                margin-top: 80px;
+        }
+        .container {
+                width: 90%;
+                margin: 30px auto;
+                padding: 15px;
+        }
+
+
+        .msg.success {
+        padding: 10px;
+        background: #4cd137;
+        color: white;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+        .msg.error {
+        padding: 10px;
+        background: #e84118;
+        color: white;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+
+h2 {
+        text-align: center;
+        color: #2e2f7dff;
+        margin-bottom: 20px;
+    }
+
+    table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+    }
+    table th {
+            background: #243784ff;
+            color: white;
+    }
+    img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+    }
+    td { 
+            padding: 12px; 
+            text-align: center; 
+            background: #f8f9ff;
+            border-bottom: 1px solid #d5d9f2;
+        }
+
+        tr:hover td { 
+            background: #dbe2ff; 
+            transition: 0.3s;
+        }
+    .add-btn {
+            display: block;
+            width: 180px;
+            text-align: center;
+            padding: 10px;
+            background: #243784ff;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto;
+    }
+    .add-btn:hover {
+            background: #235e92ff;
+    }
+
+
+    img:hover { 
+            transform: scale(1.06); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+        }
+
+
+    .msg {
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+    }
+    .msg.success { 
+            background: #c8e6c9; color: #256029;
+     }
+    .msg.error {
+            background: #ffcdd2; color: #c62828; }
+    .action-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+    }
+
+    .edit-btn { 
+             background: #0288d1; 
+    }
+
+    .delete-btn {
+             background: #c62828; 
+        }
+    .action-btn:hover
+     { 
+            opacity: 0.8; 
+    }
+
+
+    .status-completed 
+        { 
+        color: green; font-weight: bold;
+        }
+
+        .status-pending {
+
+             color: orange; 
+             font-weight: bold;
+            
+         }
+        .status-failed { color: red; font-weight: bold; }
+
+
+    /* Cancelation Request */
+    .request-card {
+        background: #ffffff;
+        border-left: 6px solid #243784;
+        padding: 20px;
+        margin: 15px auto;
+        max-width: 650px;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+
+    /* Hover effect */
+    .request-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        background: #f3f5ff;
+    }
+
+    .request-card b {
+        color: #1e2a55;
+        font-size: 14px;
+        display: inline-block;
+        width: 140px;
+    }
+
+    /* Blue approve button */
+    .request-card button {
+        margin-top: 12px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background-color: #243784;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .request-card button:hover {
+        background-color: #1a2966;
+    }
+
+    /* No data message */
+    .no-requests {
+        text-align: center;
+        margin-top: 40px;
+        color: #555;
+        font-size: 18px;
+    }
+

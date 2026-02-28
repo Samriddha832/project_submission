@@ -1,0 +1,313 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* ===============================
+   CONTAINER (CENTER)
+================================ */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #f4f6f9, #e9edf3);
+}
+
+/* ===============================
+   FORM BOX
+================================ */
+.form-box,
+.edit-form-box {
+    background: #fff;
+    width: 100%;
+    max-width: 520px;
+    padding: 40px 45px;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-box:hover,
+.edit-form-box:hover {
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   HEADINGS
+================================ */
+.form-box h2,
+.edit-form-box h2 {
+    color: #0071c2;
+    font-size: 26px;
+}
+
+/* ===============================
+   INPUTS & SELECTS & TEXTAREAS
+================================ */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0071c2;
+    box-shadow: 0 0 0 3px rgba(0, 113, 194, 0.15);
+}
+
+/* ===============================
+   DATE INPUT
+================================ */
+input[type="date"] {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.2) brightness(1.2);
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* ===============================
+   PASSWORD FIELD
+================================ */
+.password-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.password-icon input {
+    border: none;
+    padding: 0;
+    width: 100%;
+}
+
+.password-icon img {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+button {
+    width: 100%;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: bold;
+    background: #0071c2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #005a9b;
+}
+
+/* ===============================
+   ERRORS
+================================ */
+.email_error,
+.password_error,
+.error {
+    font-size: 13px;
+    color: red;
+    text-align: left;
+}
+
+/* ===============================
+   LINKS
+================================ */
+.form-links {
+    font-size: 14px;
+}
+
+.form-links a {
+    color: #0071c2;
+    text-decoration: none;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   PROFILE CARD
+================================ */
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 500px;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.profile-card h2 {
+    margin-bottom: 20px;
+    color: #0071c2;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0071c2;
+    margin-bottom: 20px;
+}
+
+.profile-card p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.edit-btn {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #243784;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.navbar h3 {
+    color: white;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===============================
+   MEDIA QUERIES
+================================ */
+@media (max-width: 767px) {
+    .wrapper { padding: 15px; align-items: flex-start; min-height: auto; }
+    .content { max-width: 100%; padding: 0 10px; }
+    .profile-card { padding: 20px; box-shadow: none; }
+    .profile-img { width: 100px; height: 100px; margin-bottom: 15px; }
+    .profile-card p { font-size: 14px; margin: 6px 0; }
+
+    input, select, textarea, button { font-size: 15px; padding: 12px 14px; }
+    button { padding: 14px; }
+    .form-box, .edit-form-box { padding: 20px 25px; max-width: 100%; box-shadow: none; }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        display: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+
+    .nav-links a { color: #243784; padding: 12px; border-bottom: 1px solid #eee; }
+    .nav-links.active { display: flex; }
+    .menu-icon { display: block; }
+}
+
+@media (min-width: 768px) {
+    .form-box, .edit-form-box { max-width: 680px; }
+    .content { max-width: 650px; }
+    .profile-card { padding: 40px; }
+    .profile-card p { font-size: 17px; }
+}
+
+@media (min-width: 1024px) {
+    .form-box, .edit-form-box { width: 50vw; max-width: 900px; padding: 55px 50px; }
+    input, select, textarea, button { font-size: 18px; }
+    input[type="date"] { padding: 14px 20px; font-size: 17px; }
+    .form-box h2 { font-size: 30px; }
+}
+
+@media (min-width: 1440px) {
+    .form-box, .edit-form-box { max-width: 980px; }
+}
+
+img { width: 80px; height: 50px; }
