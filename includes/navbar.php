@@ -18,7 +18,7 @@ if ($user_id) {
 <nav class="navbar">
     <div class="nav-left">
         <a class="logo" href="<?php echo ($level === 'hoteladmin') ? $base_url.'hotel-admin/admin_dashboard.php' :(($level == 'admin')?$base_url.'admin/index.php': $base_url.'index.php'); ?>">
-            HotelBooking
+            Home
         </a>
 
         <?php if ($user_id && $level=='user'): ?>

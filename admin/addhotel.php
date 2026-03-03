@@ -57,27 +57,27 @@ if (isset($_POST['submit'])) {
 
         
         <form method="POST" enctype="multipart/form-data">
-            <div class="form-container">
+            <div class="form-box">
                 
             <h2>Add Hotel</h2>
 
                 <div>
-                    <label>Hotel Name:</label>
+                    <label class="form-row">Hotel Name:</label>
                     <input type="text" name="hotel_name" placeholder="Enter Hotel Name" required>
                 </div>
 
                 <div>
-                    <label>Location:</label>
+                    <label class="form-row">Location:</label>
                     <input type="text" name="location" placeholder="Enter Hotel Location" required>
                 </div>
 
                 <div>
-                    <label>Hotel Image:</label>
+                    <label class="form-row">Hotel Image:</label>
                     <input type="file" name="hotel_image" accept=".jpg,.jpeg,.png" >
                 </div>
 
                 <div>
-                    <label>About</label>
+                    <label class="form-row">About</label>
                     <textarea name="description" placeholder="About Hotel"></textarea>
                 </div>
 

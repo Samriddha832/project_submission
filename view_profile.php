@@ -55,9 +55,9 @@ unset($_SESSION['toast']);
 </html>
 <div class="wrapper">
     <div class="content">
-        <h2>My Profile</h2>
-
+        
         <div class="profile-card">
+            <h2>My Profile</h2>
             <?php
             // Display current user image
             $img_path = "uploads/user/" . $row['user_image'];

@@ -63,25 +63,25 @@ if (isset($_POST['submit'])) {
     
         
         <form method="post" enctype="multipart/form-data">
-            <div class="form-container">
+            <div class="form-box">
                 <h2>Add User</h2>
 
-                <div>
+                <div class="form-row">
                     <label>User Name</label>
                     <input type="text" name="username" value="<?= $name ?>" required>
                 </div>
 
-                <div>
+                <div class="form-row">
                     <label>Password</label>
                     <input type="password" name="password" value="<?= $password ?>" required>
                 </div>
 
-                <div>
+                <div class="form-row">
                     <label>Email</label>
                     <input type="text" name="email" value="<?= $email ?>" required>
                 </div>
 
-                <div>
+                <div class="form-row">
                     <label>User Role</label>
                     <select name="select-user">
                         <option value="hoteladmin">Hotel Admin</option>
@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
 
-                <div>
+                <div class="form-row">
                     <label>User Image</label>
                     <input type="file" name="user_image" accept=".jpg,.jpeg,.png" >
                 </div>

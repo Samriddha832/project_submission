@@ -41,29 +41,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     
-    <div class="edit-user-container">
+    <div class="container">
     
         <form method="POST" enctype="multipart/form-data">
             
-            <div class="form-container">
+            <div class="form-box">
             <h2>Edit User</h2>
         <div>
-            <label>User Name:</label>
+            <label class="form-row">User Name:</label>
             <input type="text" name="user_name" value="<?= htmlspecialchars($user['name']); ?>" required>
         </div>
 
         <div>
-            <label>Email:</label>
+            <label class="form-row">Email:</label>
             <input type="text" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
         </div>
 
         <div>
-            <label>Password:</label>
+            <label class="form-row">Password:</label>
             <input type="password" name="password" placeholder="Leave blank to keep current">
         </div>
 
         <div>
-            <label>Role</label>
+            <label class="form-row">Role</label>
             <select name="role">
                 <option value="hoteladmin"<?php if($user['level']=='hoteladmin') echo "selected"?>>Hotel-Admin</option>
                 <option value="admin"<?php if($user['level']=='admin') echo "selected"?>>Admin</option>

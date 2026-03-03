@@ -61,9 +61,9 @@ $row = mysqli_fetch_assoc($result);
 
 <div class="wrapper">
     <div class="content">
-        <h2>View / Edit Profile</h2>
-
+        
         <div class="profile-card">
+            <h2>View / Edit Profile</h2>
             <?php
             $img_path = "uploads/user/" . $row['user_image'];
             if (!empty($row['user_image']) && file_exists($img_path)) {

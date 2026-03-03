@@ -75,22 +75,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h2>Edit Hotel</h2>
                     
                         <div>
-                            <label>Hotel Name:</label>
+                            <label class="form-row">Hotel Name:</label>
                             <input type="text" name="hotel_name" value="<?= htmlspecialchars($hotel['hotel_name']); ?>" required>
                         </div>
 
                         <div>
-                            <label>Location:</label>
+                            <label class="form-row">Location:</label>
                             <input type="text" name="location" value="<?= htmlspecialchars($hotel['location']); ?>" required>
                         </div>
 
                         <div>
-                            <label>Google Location(Link):</label>
+                            <label class="form-row">Google Location(Link):</label>
                             <input type="text" name="locationlink" value="<?= htmlspecialchars($hotel['hotel_address_link']); ?>" placeholder="Example:https://maps.app.goo.gl/k8sUYoiwZ2k9ouGt9">
                         </div>
 
                         <div>
-                            <label>Hotel Image:</label>
+                            <label class="form-row">Hotel Image:</label>
                             <?php if (!empty($hotel['hotel_image']) && file_exists("../uploads/hotels/".$hotel['hotel_image'])): ?>
                                 <img src="../uploads/hotels/<?= $hotel['hotel_image'] ?>" alt="Hotel Image" class="formimg">
                             <?php else: ?>
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <div>
-                            <label>About Hotel:</label>
+                            <label class="form-row">About Hotel:</label>
                             <textarea name="description" rows="5"><?= htmlspecialchars($hotel['about']); ?></textarea>
 
                         </div>

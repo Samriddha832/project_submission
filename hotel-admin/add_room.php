@@ -76,8 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-box">
                 <h2>Add New Room</h2>
                 <div>
-                    <label>Room Type:</label>
-                    <select name="room_type" >
+                    <label class="form-row">Room Type:</label>
+                    <select name="room_type">
                         <option value="Standard Room">Standard Room</option>
                         <option value="Deluxe Room">Deluxe Room</option>
                         <option value="Super Deluxe Room">Super Deluxe Room</option>
@@ -91,17 +91,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div>
-                    <label>Room Price (per night)</label>
+                    <label class="form-row">Room Price (per night)</label>
                     <input type="number" name="room_price" min="1" required>
                 </div>
 
                 <div>
-                    <label>Room Number</label>
+                    <label class="form-row">Room Number</label>
                     <input type="text" name="room_number" required>
                 </div>
 
                 <div>
-                    <label>Room Image </label>
+                    <label class="form-row">Room Image </label>
                     <input type="file" name="room_image" accept=".jpg,.jpeg,.png" required>
                 </div>
 
