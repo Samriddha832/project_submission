@@ -12,16 +12,15 @@ $hotel_admin_id = $_SESSION['user_id']; // current hotel admin ID
 
 // Fetch bookings with room info
 $sql = "SELECT 
-            b.booking_id, b.check_in, b.check_out, b.rooms_booked,b.status,
+            b.*,
             u.user_id, u.name, u.email,u.phone,
             h.hotel_id, h.hotel_name,
-            hr.room_id, hr.room_number,hr.room_type, hr.room_price, hr.room_image,p.payment_status,p.amount
+            hr.room_id, hr.room_number,hr.room_type, hr.room_price, hr.room_image
         
         FROM bookings b
         JOIN users u ON b.user_id = u.user_id
         JOIN hotels h ON b.hotel_id = h.hotel_id
         JOIN hotel_rooms hr ON b.room_id = hr.room_id
-        LEFT JOIN payments p ON b.booking_id = p.booking_id
         WHERE h.hotel_admin_id = $hotel_admin_id and b.status = 'booked'
         ORDER BY b.booking_id DESC";
 
@@ -57,7 +56,7 @@ if (!$result) {
                 <th>Check-Out</th>
                 <th>Rooms Status</th>
                 <th>Total Amount</th>
-                <th>Payment Status</th>
+                
             </tr>
 
             <?php 
@@ -65,6 +64,12 @@ if (!$result) {
                 echo "<tr><td colspan='13'>No bookings found for your hotels.</td></tr>";
             } else {
                 while ($row = mysqli_fetch_assoc($result)) { 
+                    $check_in = new DateTime($row['check_in']);
+                    $check_out = new DateTime($row['check_out']);
+                    $nights = max(1, $check_in->diff($check_out)->days);
+
+                    // Total price
+                    $total_price = $row['rooms_booked'] * $row['room_price'] * $nights;
                     $imagePath = "../uploads/rooms/" . $row['room_image'];
                     if (empty($row['room_image']) || !file_exists($imagePath)) {
                         $imagePath = "https://via.placeholder.com/200x150?text=No+Image";
@@ -86,10 +91,8 @@ if (!$result) {
                         <td><?= $row['check_in'] ?></td>
                         <td><?= $row['check_out'] ?></td>
                         <td><?= $row['status'] ?></td>
-                        <td>NPR <?= number_format($row['amount'], 2) ?></td>
-                        <td class="status-<?= strtolower($row['payment_status']) ?>">
-                            <?= ucfirst($row['payment_status']) ?>
-                        </td>
+                        <td>NPR <?= $total_price ?></td>
+                        
                     </tr>
             <?php 
                 } 

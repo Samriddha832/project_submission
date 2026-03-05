@@ -51,8 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     WHERE hotel_id=$id";
     mysqli_query($con, $updatehotel) or die("Hotel Update Failed: " . mysqli_error($con));
 
-
-
+    $_SESSION['toast'] = ["message"=>"Hotel Edited Successfully!","type"=>"success"];
     header("Location: view_hotel.php");
     exit();
 }

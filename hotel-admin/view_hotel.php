@@ -26,6 +26,8 @@ $hotel = mysqli_fetch_assoc($result);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <title>Hotel Admin Profile</title>
 <style>
 body {
@@ -136,8 +138,22 @@ h1 {
 </style>
 </head>
 <body>
+    <div id="tostBox"></div>
+    <link rel="stylesheet" href="../Tost_Message/style.css">
+    <script src="../Tost_Message/script.js"></script>
 
 <div class="container">
+    <?php 
+    if(!empty($_SESSION['toast'])){
+        $toast = $_SESSION['toast']; ?>
+<script>
+    showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>");
+</script>
+
+  <?php  }
+  unset($_SESSION['toast']);
+    
+    ?>
     <h1>Your Hotel Profile</h1>
 
     <?php if ($msg != ""): ?>

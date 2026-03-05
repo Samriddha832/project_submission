@@ -16,26 +16,25 @@ if (isset($_GET['id'])) {
     try {
         mysqli_begin_transaction($con);
 
+        $deletehotel = "DELETE FROM hotels where(hotel_admin_id = $id)";
+        mysqli_query($con,$deletehotel);
+
         $deleteQuery = "DELETE FROM users WHERE user_id='$id'";
         mysqli_query($con, $deleteQuery);
 
         mysqli_commit($con);
 
-        $_SESSION['hotel_msg'] = [
-            "text" => "user deleted successfully!",
-            "type" => "success"
-        ];
+        $_SESSION['toast'] = ["message"=>"user deleted successfully!","type" => "success"];
+
     } 
     catch (mysqli_sql_exception $e) {
     mysqli_rollback($con);
 
     // Friendly message for the user
-    $_SESSION['hotel_msg'] = [
-        "text" => "Cannot delete user! It has bookings linked to it.",
-        "type" => "error"
-    ];
-
-    
+        $_SESSION['toast'] = [
+                "message" => "Cannot delete user! It has bookings linked to it.",
+                "type" => "error"
+            ];     
 }
 
 

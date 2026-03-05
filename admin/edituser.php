@@ -24,11 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     if(mysqli_query($con, $update_query)){
-
+        $_SESSION['toast'] = ["message"=>"user profile edited successfully!","type"=>"success"];
         header("Location: index.php");
         exit();
     }
-    echo mysqli_error($con);
+    $error = mysqli_error($con);
+    $_SESSION['toast']=["message"=>$error,"type"=>"error"];
+    header('location:index.php');
 }
 ?>
 
@@ -47,26 +49,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="form-box">
             <h2>Edit User</h2>
-        <div>
-            <label class="form-row">User Name:</label>
+        <div class="form-row">
+            <label>User Name:</label>
             <input type="text" name="user_name" value="<?= htmlspecialchars($user['name']); ?>" required>
         </div>
 
-        <div>
-            <label class="form-row">Email:</label>
+        <div class="form-row">
+            <label>Email:</label>
             <input type="text" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
         </div>
 
-        <div>
-            <label class="form-row">Password:</label>
-            <input type="password" name="password" placeholder="Leave blank to keep current">
+        <div class="form-row">
+            <label>Password:</label>
+            <div class="password-icon">
+                <input type="password" name="password" placeholder="Leave blank to keep current" class="password_input">
+                <img src="../uploads/login_icon/hide.png" class="hide_icon">
+            </div>
         </div>
 
-        <div>
-            <label class="form-row">Role</label>
+        <div class="form-row">
+            <label>Role</label>
             <select name="role">
                 <option value="hoteladmin"<?php if($user['level']=='hoteladmin') echo "selected"?>>Hotel-Admin</option>
-                <option value="admin"<?php if($user['level']=='admin') echo "selected"?>>Admin</option>
             </select>
         </div>
 
@@ -80,3 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </body>
     </html>
+
+
+    <script src="../script/form_icon.js"></script>

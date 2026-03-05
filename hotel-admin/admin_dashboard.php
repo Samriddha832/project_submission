@@ -33,16 +33,34 @@ if (isset($_SESSION['room_msg'])) {
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../style/adminstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <title>Hotel Admin Dashboard</title>
 </head>
 <body>
+    <div id="tostBox"></div>
+    <link rel="stylesheet" href="../Tost_Message/style.css">
+    <script src="../Tost_Message/script.js"></script>
 
 <div class="container">
-    <h2>Hotel Admin Dashboard</h2>
+    <?php
 
-    <?php if ($msg != ""): ?>
-        <div class="msg <?= $msgType ?>"><?= $msg ?></div>
-    <?php endif; ?>
+
+
+        if(!empty($_SESSION['toast'])){
+            $toast = $_SESSION['toast']; ?>
+
+        <script>
+                showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>");
+            </script>
+        <?php
+        unset($_SESSION['toast']);
+
+        }
+
+
+?>
+    <h2>Hotel Admin Dashboard</h2>
 
     <a href="add_room.php" class="add-btn">+ Add New Room</a>
 

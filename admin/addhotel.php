@@ -36,11 +36,14 @@ if (isset($_POST['submit'])) {
         $new_hotel_id = mysqli_insert_id($con);
         $hotel_admin_id_query = "select hotel_admin_id from hotels where (hotel_id =$newHotelId)) limit 1" ;
         $_SESSION['hotel_admin_id'] = $hotel_admin_id;
+        $_SESSION['toast'] = ["message"=>"user crated Successfully, for the hotel admin","type"=>"success"];
         header("location:index.php");
         exit();
     } 
     else {
-        $sucessmsg = "Error inserting hotel: " . mysqli_error($con);
+        $errormsg = "Error inserting hotel: " . mysqli_error($con);
+        $_SESSION['toast'] = ["message"=>$errormsg,"type"=>"error"];
+        header('location:index.php');
     }
 }
 ?>
@@ -52,8 +55,27 @@ if (isset($_POST['submit'])) {
     <title>Add Hotel</title>
 </head>
 <body>
+    <div id="tostBox"></div>
+    <link rel="stylesheet" href="../Tost_Message/style.css">
+    <script src="../Tost_Message/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <div class="container">
+    <?php 
+    
+    if(!empty($_SESSION['toast'])){
+        $toast = $_SESSION['toast']; ?>
+
+        <script>
+            showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>");
+        </script>
+
+<?php
+        unset($_SESSION['toast']);
+    }
+    
+
+    ?>
 
         
         <form method="POST" enctype="multipart/form-data">

@@ -23,12 +23,36 @@ $result = mysqli_query($con, $query);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style/adminstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <title>Admin Dashboard</title>
 <style>
 
 </style>
 </head>
 <body>
+    <div id="tostBox"></div>
+    <link rel="stylesheet" href="../Tost_Message/style.css">
+    <script src="../Tost_Message/script.js"></script>
+
+<?php 
+
+if(!empty($_SESSION['toast'])){
+
+    $toast = $_SESSION['toast']; ?>
+
+    <script>
+
+        showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>");
+
+    </script>
+<?php
+unset($_SESSION['toast']);
+
+}
+
+
+
+?>
 
 <div class="container">
     <h2>Admin Dashboard</h2>

@@ -107,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" 
                        name="password" 
                        placeholder="Password" 
+                       class="password_input"
                        required>
                 <img src="../uploads/login_icon/hide.png" alt="hide" class="hide_icon">
             </div>
@@ -116,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" 
                            name="conform_password" 
                            placeholder="Confirm Password" 
+                           class="password_input"
                            required>
                     <img src="../uploads/login_icon/hide.png" alt="hide" class="hide_icon">
                 </div>

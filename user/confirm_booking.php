@@ -49,48 +49,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die("Insert Error: " . mysqli_error($con));
     }
 
-    // After there was booking was completed and next step we send mail to user your booking is conformed
-//     $email = $_SESSION['email'];
-//     $subject = "Booking Confirmation";
-//     $body = "
-//     <table width='100%' cellpadding='12' style='font-family:Arial,sans-serif;'>
-//     <tr>
-//     <td>
-//         <h2>Thank you for booking with us!</h2>
-
-//         <p>Your booking has been successfully confirmed.</p>
-
-//         <p><b>Check-in:</b> $check_in</p>
-//         <p><b>Check-out:</b> $check_out</p>
-
-//         <p>
-//             We look forward to hosting you.<br><br>
-//             <strong>Hotel Booking System</strong><br>
-//              © ".date('Y')." Hotel Booking System · Powered by <b>Suman</b>
-//         </p>
-//     </td>
-//     </tr>
-//     </table>
-// ";
-
-
-    // $attachments = [
-    //     "../uploads/rooms/".$room['room_image'],
-    //     "../uploads/hotels/" . $room['hotel_image']
-    // ];
-    // $result = send_mail($email, $subject, $body, $attachments);
+ 
 
     $booking_id = mysqli_insert_id($con);
 
-    $sql_payment = "INSERT INTO payments
-        (booking_id, user_id,amount, payment_method, payment_status )
-        VALUES ($booking_id, $user_id,$total_price, 'esewa', 'pending')";
-
-    if (!mysqli_query($con, $sql_payment)) {
-
-        die("PAYMENT SQL ERROR: " . mysqli_error($con));
     
-    }
 
     unset($_SESSION['booking_data']);
     unset($_SESSION['old_search']);

@@ -21,8 +21,8 @@ if (isset($_GET['id'])) {
 
         mysqli_commit($con);
 
-        $_SESSION['room_msg'] = [
-            "text" => "Room deleted successfully!",
+        $_SESSION['toast'] = [
+            "message" => "Room deleted successfully!",
             "type" => "success"
         ];
     } 
@@ -30,8 +30,8 @@ if (isset($_GET['id'])) {
     mysqli_rollback($con);
 
     // Friendly message for the user
-    $_SESSION['room_msg'] = [
-        "text" => "Cannot delete Room! It has bookings linked to it.",
+    $_SESSION['toast'] = [
+        "message" => "Cannot delete Room! It has bookings linked to it.",
         "type" => "error"
     ];
 

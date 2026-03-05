@@ -61,13 +61,11 @@ $query = "
         u.name, u.email,
         h.hotel_name, h.location, h.hotel_image,
         hr.room_number, hr.room_type, hr.room_price, 
-        hr.about_rooms, hr.room_image,
-        p.payment_status, p.amount
+        hr.about_rooms, hr.room_image
         FROM bookings b
         JOIN users u ON b.user_id = u.user_id
         JOIN hotels h ON b.hotel_id = h.hotel_id
         JOIN hotel_rooms hr ON b.room_id = hr.room_id
-        LEFT JOIN payments p ON b.booking_id = p.booking_id
         WHERE b.booking_id = $booking_id
         AND b.user_id = $user_id
         LIMIT 1
@@ -113,60 +111,59 @@ if (!file_exists($imagePath) || empty($row['room_image'])) {
 <body>
     
 
-<div class="invoice-container">
+<div class="invoice-wrapper">
 
-    <!-- Left Side -->
-    <div class="invoice-left">
+    <div class="invoice-header">
         <h2>Hotel Booking Invoice</h2>
-        <hr>
+        <button class="print-btn" onclick="window.print()">🖨 Print Invoice</button>
+    </div>
 
-        <p><b>Invoice No:</b> <?= $row['booking_id']; ?></p>
-        <p><b>Date:</b> <?= date("Y-m-d"); ?></p>
+    <div class="invoice-body">
 
-        <h3>Customer Details</h3>
-        <p>
-            <b>Name:</b> <?= htmlspecialchars($row['name']); ?><br>
-            <b>Email:</b> <?= htmlspecialchars($row['email']); ?>
-        </p>
+        <div class="invoice-left">
 
-        <h3>Hotel & Room Details</h3>
-        <p>
-            <b>Hotel:</b> <?= htmlspecialchars($row['hotel_name']); ?><br>
-            <b>Location:</b> <?= htmlspecialchars($row['location']); ?><br>
-            <b>Room No:</b> <?= htmlspecialchars($row['room_number']); ?><br>
-            <b>Room Type:</b> <?= htmlspecialchars($row['room_type']); ?><br>
-            <!-- <b>Room Info:</b> <?= htmlspecialchars($row['about_rooms']); ?><br> -->
-            <b>Price per Room:</b> Rs. <?= number_format($row['room_price'], 2); ?>
-        </p>
+            <div class="section">
+                <h3>Invoice Info</h3>
+                <p><b>Invoice No:</b> <?= $row['booking_id']; ?></p>
+                <p><b>Date:</b> <?= date("Y-m-d"); ?></p>
+            </div>
 
-        <h3>Booking Details</h3>
-        <p>
-            <b>Check-in:</b> <?= $row['check_in']; ?><br>
-            <b>Check-out:</b> <?= $row['check_out']; ?><br>
-            <b>Nights:</b> <?= $nights; ?><br>
-            <b>Rooms Booked:</b> <?= $row['rooms_booked']; ?><br>
-            <b>Total Price:</b> <b style="color:green;">Rs. <?= number_format($total_price, 2); ?></b><br>
+            <div class="section">
+                <h3>Customer</h3>
+                <p><b>Name:</b> <?= htmlspecialchars($row['name']); ?></p>
+                <p><b>Email:</b> <?= htmlspecialchars($row['email']); ?></p>
+            </div>
 
-            <b>Payment Status:</b>
-            <span style="color:<?= ($row['payment_status'] == 'paid' ? 'green' : 'red'); ?>;">
-                <?= ucfirst($row['payment_status'] ?? 'unpaid'); ?>
-            </span>
-        </p>
+            <div class="section">
+                <h3>Hotel</h3>
+                <p><b>Hotel:</b> <?= $row['hotel_name']; ?></p>
+                <p><b>Location:</b> <?= $row['location']; ?></p>
+                <p><b>Room:</b> <?= $row['room_type']; ?> (<?= $row['room_number']; ?>)</p>
+            </div>
 
-       
-      
+            <div class="section">
+                <h3>Booking</h3>
+                <p><b>Check-in:</b> <?= $row['check_in']; ?></p>
+                <p><b>Check-out:</b> <?= $row['check_out']; ?></p>
+                <p><b>Nights:</b> <?= $nights; ?></p>
+                <p><b>Rooms:</b> <?= $row['rooms_booked']; ?></p>
+                <p class="total"><b>Total: Rs <?= number_format($total_price,2); ?></b></p>
+                <p><b>Booking Status:</b> <?= $row['status']; ?></p>
 
-    <!-- Right Side -->
-    <div class="invoice-right">
-        <img src="<?= $imagePath; ?>" alt="Room Image">
+            </div>
+
+        </div>
+
+        <div class="invoice-right">
+            <img src="<?= $imagePath ?>">
+        </div>
+
     </div>
 
 </div>
 
-<div class="footer-section">
-    <hr>
-    <p>Thank you for booking with us!</p>
-    <button class="print-btn" onclick="window.print()">🖨️ Print Invoice</button>
+<div class="invoice-footer">
+    <p>Thank you for booking with us.</p>
 </div>
 
 <?php include '../includes/footer.php'; ?>

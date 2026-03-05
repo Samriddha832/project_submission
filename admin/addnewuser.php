@@ -11,10 +11,21 @@ $password = '';
 if (isset($_POST['submit'])) {
 
     $name = trim($_POST['username']);
+    $_SESSION['user_name'] = $name;
     $email = trim($_POST['email']);
+    $_SESSION['email'] = $email;
     $password = trim($_POST['password']);
+    $_SESSION['password'] = $password;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $role = trim($_POST['select-user']);
+
+    $chekemail = "SELECT * FROM users where(email = '$email') LIMIT 1";
+    $result = mysqli_query($con,$chekemail);
+    if(mysqli_num_rows($result) ==1){
+        $_SESSION['toast'] = ["message"=>"Email Already Register,Use diffrent email","type"=>"error"];
+        header('location:addnewuser.php');
+        exit();
+    }
 
     // Upload image
     $user_image = "";
@@ -37,14 +48,20 @@ if (isset($_POST['submit'])) {
         $newUserId = mysqli_insert_id($con);
 
         if ($role == 'hoteladmin') {
+            $_SESSION['toast'] = ["message"=>"User Created SuccessFully,Now Assign the Hotel for the User By filling this form","type"=>"success"];
+            unset($_SESSION['user_name']);
+            unset($_SESSION['password']);
+            unset($_SESSION['email']);
             header("Location: addhotel.php?admin_id=" . $newUserId);
             exit();
         }
 
-        $sucessmsg = "User created successfully!";
+        
     } 
     else {
-        $sucessmsg = "Problem in user creation: " . mysqli_error($con);
+        $errormsg = "Problem in user creation: " . mysqli_error($con);
+        $_SESSION['toast'] = ["message"=>$errormsg,"type"=>"error"];
+        header('location:index.php');
     }
 }
 ?>
@@ -58,9 +75,25 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../style/formstyle.css">
 </head>
 <body>
+    <div id="tostBox"></div>
+    <link rel="stylesheet" href="../Tost_Message/style.css">
+    <script src="../Tost_Message/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <div class="container">
+
+    <?php 
     
+    if(!empty($_SESSION['toast'])){ 
+    $toast = $_SESSION['toast'];    ?>
+    <script>showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>"); </script>  
+
+   <?php
+   unset($_SESSION['toast']);
+
+    }
+    
+    ?>    
         
         <form method="post" enctype="multipart/form-data">
             <div class="form-box">
@@ -68,30 +101,32 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-row">
                     <label>User Name</label>
-                    <input type="text" name="username" value="<?= $name ?>" required>
+                    <input type="text" name="username" value="<?= $_SESSION['user_name'] ?>" required>
                 </div>
 
                 <div class="form-row">
                     <label>Password</label>
-                    <input type="password" name="password" value="<?= $password ?>" required>
+                    <div class="password-icon">
+                        <input type="password" name="password" class="password_input" required>
+                        <img src="../uploads/login_icon/hide.png" class="hide_icon">
+                    </div>
                 </div>
 
                 <div class="form-row">
                     <label>Email</label>
-                    <input type="text" name="email" value="<?= $email ?>" required>
+                    <input type="email" name="email" value="<?= $_SESSION['email'] ?>" required>
                 </div>
 
                 <div class="form-row">
                     <label>User Role</label>
                     <select name="select-user">
                         <option value="hoteladmin">Hotel Admin</option>
-                        <option value="admin">Admin</option>
                     </select>
                 </div>
 
                 <div class="form-row">
                     <label>User Image</label>
-                    <input type="file" name="user_image" accept=".jpg,.jpeg,.png" >
+                    <input type="file" name="user_image" accept=".jpg,.jpeg,.png" required >
                 </div>
 
                 <button type="submit" name="submit">Submit</button>
@@ -106,3 +141,7 @@ if (isset($_POST['submit'])) {
 
 </body>
 </html>
+
+
+<script src="../script/form_icon.js"></script>
+

@@ -76,6 +76,14 @@ textarea {
     background-color: #fff;
 }
 
+.password-icon:focus-within {
+    border-color: #0071c2;
+    box-shadow: 0 0 0 3px rgba(0, 113, 194, 0.15);
+}
+
+.password-icon input:focus {
+    box-shadow: none;
+}
 input:focus,
 select:focus,
 textarea:focus {
@@ -120,14 +128,16 @@ input[type="date"]::-webkit-clear-button {
 
 .password-icon input {
     border: none;
-    padding: 0;
-    width: 100%;
+    padding: 2px 0;
 }
 
 .password-icon img {
     width: 22px;
     height: 22px;
     cursor: pointer;
+}
+.password-icon{
+    width:100%;
 }
 
 /* ===============================

@@ -1,58 +1,87 @@
-.invoice-container {
-    width: 900px;
-    margin: 90px auto;
-    margin-bottom: 30px;
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 25px;
-    height: 100vh;
-    border-radius: 10px;
-    display: flex;
-    
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f3f4f6;
 }
 
-.invoice-left { 
-    flex: 1; 
-}
-.invoice-right { 
-    flex: 2; 
-    
-    text-align: center; 
-}
-
-.invoice-right img {
-    margin-top: 100px;
-    width: 400px;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+.invoice-wrapper{
+    width:850px;
+    margin:90px auto 20px;
+    background:white;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
-
-
-.payment-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 15px;
+.invoice-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
 }
 
-.btn-pay { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; color: white; font-weight: bold; }
-
-.khalti { background: #5a2a82; }
-.esewa { background: #60BB46; }
-
-.footer-section {
-    width: 900px;
-    margin: 0px auto;
-    text-align: center;
+.invoice-header h2{
+    margin:0;
 }
 
-.print-btn {
-    background: #333;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 6px;
-    cursor: pointer;
+.invoice-body{
+    display:flex;
+    gap:40px;
+}
+
+.invoice-left{
+    flex:2;
+}
+
+.section{
+    margin-bottom:18px;
+}
+
+.section h3{
+    border-bottom:1px solid #ddd;
+    padding-bottom:4px;
+    margin-bottom:6px;
+}
+
+.section p{
+    margin:4px 0;
+    color:#444;
+}
+
+.total{
+    color:#1a7f37;
+    font-size:16px;
+}
+
+.invoice-right{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.invoice-right img{
+    width:100%;
+    max-width:320px;
+    border-radius:8px;
+    object-fit:cover;
+}
+
+.invoice-footer{
+    width:850px;
+    margin:0 auto 40px;
+    text-align:center;
+    color:#666;
+}
+
+.print-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.print-btn:hover{
+    background:#1d4ed8;
 }

@@ -22,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image_sql = "";
 
     if (isset($_FILES['room_image']) && $_FILES['room_image']['error'] == 0) {
-        $uploadDir = "uploads/rooms/";
+        $uploadDir = "../uploads/rooms/";
         if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
         $room_image = basename($_FILES['room_image']['name']);
-        $targetFile = $uploadDir . $hotel_image;
+        $targetFile = $uploadDir . $room_image;
         move_uploaded_file($_FILES['room_image']['tmp_name'], $targetFile);
 
         $image_sql = ", room_image='$room_image'";
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                WHERE room_id='$id'";
 
     mysqli_query($con, $update);
-    $_SESSION['room_msg'] =["text" =>"Room Edited Succesfully!" ,"type" =>"success"];
+    $_SESSION['toast'] =["message" =>"Room Edited Succesfully!" ,"type" =>"success"];
     header("Location: admin_dashboard.php");
     exit();
 }
@@ -60,12 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-box">
                 <h2>Edit Room</h2>
                 <div>
-                    <label>Room Number:</label>
+                    <label class="form-row">Room Number:</label>
                     <input type="text" name="room_number" value="<?= htmlspecialchars($room['room_number']); ?>" required>
                 </div>
 
                 <div>
-                    <label>Room Type:</label>
+                    <label class="form-row">Room Type:</label>
                     <select name="room_type" >
                         <option value="Standard Room">Standard Room</option>
                         <option value="Deluxe Room">Deluxe Room</option>
@@ -80,17 +80,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div>
-                    <label>Price per Room:</label>
+                    <label class="form-row">Price per Room:</label>
                     <input type="number" name="price_per_room" value="<?= htmlspecialchars($room['room_price']); ?>" required>
                 </div>
 
                 <div>
-                    <label>Room Image:</label>
+                    <label class="form-row">Room Image:</label>
                     <input type="file" name="room_image" accept="image/*">
                 </div>
 
                 <div>
-                        <label for="discription">About</label>
+                        <label for="discription" class="form-row">About</label>
                         <textarea name="description" id="discription" placeholder="About Room"><?= $room['about_rooms'] ?></textarea>
                 </div>
 
