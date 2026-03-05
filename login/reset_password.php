@@ -1,9 +1,9 @@
 <?php
 include '../includes/connection.php';
 session_start();
-// if(!(isset($_SESSION['otp-verified']) || $_SESSION['password-verified'])){
-//     header('location:forget_password.php');
-// }
+if(!(isset($_SESSION['otp-verified']) || $_SESSION['password-verified'])){
+    header('location:forget_password.php');
+}
 $email = $_SESSION['forget_email'];
 $msg_error = "";
 $sucess_msg = "";
@@ -16,15 +16,18 @@ if(isset($_POST['change_password'])){
         $hashed_password = password_hash($new_password,PASSWORD_DEFAULT);
         $updatequery = "update users set password ='$hashed_password' where(email ='$email')";
         if(mysqli_query($con,$updatequery)){
-            $sucess_msg = "Password update sucessfully"."<a href='login.php'>Login here</a>";
+            $_SESSION['toast'] = ["message"=>"Password changed sucessfully ! Login here","type"=>"success"];
             unset($_SESSION['otp-verified']);
             unset($_SESSION['forget_email']);
             header('location:login.php');
         }
         else
         {
-            $msg_error =  "Problem in Password update";
-        }
+            
+        $_SESSION['toast'] = ["message"=>"Problem in Password update","type"=>"error"];
+        header('location:login.php');
+
+    }
     
 
 }
