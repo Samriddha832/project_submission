@@ -4,7 +4,7 @@ session_start();
 include 'connection.php';
 $base_url = "/Hotel-Booking/";
 
-$level = null;
+$level = "";
 $user_id = $_SESSION['user_id'] ?? null;
 
 if ($user_id) {
@@ -27,7 +27,7 @@ if ($user_id) {
 
         <?php if ($user_id && $level=='hoteladmin'): ?>
             <a href="<?php echo $base_url; ?>hotel-admin/view_hotel.php">Your Hotel</a>
-            <a href="<?php echo $base_url; ?>hotel-admin/admin_invoices.php">Invoices</a>
+            <a href="<?php echo $base_url; ?>hotel-admin/admin_invoices.php">Bookings</a>
             <a href="<?php echo $base_url; ?>hotel-admin/admin_pending_cancellations.php">Cancellations</a>
         <?php endif; ?>
     </div>

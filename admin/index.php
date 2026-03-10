@@ -57,10 +57,7 @@ unset($_SESSION['toast']);
 <div class="container">
     <h2>Admin Dashboard</h2>
 
-        <?php if ($msg != ""): ?>
-            <div class="msg <?php echo $msgType; ?>"><?php echo $msg; ?></div>
-        <?php endif; ?>
-
+        
     <a href="addnewuser.php" class="add-btn">+ Add New User</a>
 
     <table>

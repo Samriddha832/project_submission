@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-row">
                     <label>User Name</label>
-                    <input type="text" name="username" value="<?= $_SESSION['user_name'] ?>" required>
+                    <input type="text" name="username" value="<?= $_SESSION['user_name'] ?? '' ?>" required>
                 </div>
 
                 <div class="form-row">
