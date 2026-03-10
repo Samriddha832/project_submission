@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
         exit();
     } else {
         // User not registered → show toast
-        $_SESSION['toast'] = ["message" => "Email is not registered! Please register.", "type" => "error"];
+        $_SESSION['toast'] = ["message" => "Email is not registered in our system,Please try with diffrent email", "type" => "error"];
         header('Location:forget_password.php'); // reload same page to show toast
         exit();
     }

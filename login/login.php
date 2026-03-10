@@ -68,13 +68,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
 
             if ($row['level'] == 'hoteladmin') {
+                    $_SESSION['toast'] = [
+                        'message' => 'Login Sucessfull,Welcome to Hotel Booking System By Hotel Admin Login',
+                        'type' => 'success'
+                  ];
                 header("Location: ../hotel-admin/admin_dashboard.php");
             } 
             elseif($row['level'] == 'admin'){
+                    $_SESSION['toast'] = [
+                    'message' => 'Login Sucessfull,Welcome to Hotel Booking System By Admin Login',
+                    'type' => 'success'
+                    ];
                 header("Location: ../admin/index.php");
             }
             else {
-                $_SESSION['tost'] = [
+                $_SESSION['toast'] = [
                 'message' => 'Login Sucessfull,Welcome to Hotel Booking System',
                 'type' => 'success'
         ];

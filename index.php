@@ -31,14 +31,14 @@ if ($check_out <= $check_in) {
 
 
 
-if(!empty($_SESSION['tost'])){
-    $toast = $_SESSION['tost']; ?>
+if(!empty($_SESSION['toast'])){
+    $toast = $_SESSION['toast']; ?>
 
 <script>
         showTost("<?= $toast['message'] ?>","<?= $toast['type'] ?>");
     </script>
 <?php
-unset($_SESSION['tost']);
+unset($_SESSION['toast']);
 
 }
 

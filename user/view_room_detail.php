@@ -96,10 +96,7 @@ $image = !empty($room['room_image'])
             </button>
         </form>
 
-        <!-- CHAT / ENQUIRY BUTTON (Normal link) -->
-        <a href="enquiry_chat.php?room_id=<?= $room['room_id'] ?>&hotel_id=<?= $room['hotel_id'] ?>" class="btn">
-            <i class="fa fa-comments"></i> Enquiry / Chat
-        </a>
+        
 
     </div>
 
