@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+			const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
             if (!passwordPattern.test(password)) {
                 errorDiv.textContent =
-                    'Password must be at least 6 characters long and include at least one number and one letter.';
+                    'Week Password At leat one uppercase, lowercase, speicla symbol ';
                 event.preventDefault(); 
                 return;
             }

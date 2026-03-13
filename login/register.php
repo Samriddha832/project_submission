@@ -75,8 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="container">
-    <form method="POST" class="register-form">
-        <div class="form-box">
+<form method="POST" class="register-form" id="registerForm">        <div class="form-box">
             <h2>Register</h2>
 
             <input type="text" 
@@ -108,8 +107,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                        name="password" 
                        placeholder="Password" 
                        class="password_input"
+                       id="password"
                        required>
                 <img src="../uploads/login_icon/hide.png" alt="hide" class="hide_icon">
+                <p class="password_error"></p>
             </div>
 
             <div>
@@ -118,8 +119,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            name="conform_password" 
                            placeholder="Confirm Password" 
                            class="password_input"
+                           id="confirm_password"
                            required>
                     <img src="../uploads/login_icon/hide.png" alt="hide" class="hide_icon">
+                    <p class="password_error"></p>
                 </div>
                 <p class="password_error"><?= $conform_password_error ?></p>
             </div>
